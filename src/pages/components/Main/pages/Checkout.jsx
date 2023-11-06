@@ -92,7 +92,7 @@ const DataGridWrapper = styled.div`
 const URL = "./feedback";
 
 const Checkout = () => {
-  const empid = ApplicationStore().getStorage("empid");
+  const student_id = ApplicationStore().getStorage("student_id");
   const [pname, setPname] = useState('');
   const [productlist, setProductlist] = useState([]);
   const [product_id, setProduct_id] = useState('');
@@ -116,7 +116,7 @@ const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const method = "POST";
-    const data = { empid, product_id: pname, feedback };
+    const data = { student_id, product_id: pname, feedback };
     const mainURL = URL + '/add';
     serviceMethod(mainURL, method, data, handleSuccess, handleException);
     setShowDataGridForm(true);
@@ -129,7 +129,7 @@ const Checkout = () => {
 
   const loadData = async () => {
     try {
-      let URL = './products/';
+      let URL = './item/';
       const response = await axios.get(URL);
       if (response.data.status == 401) {
         setProductlist([]);

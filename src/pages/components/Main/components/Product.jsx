@@ -5,8 +5,6 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
-
-
 import { useAuthContext } from "../../../../context/AuthContext";
 
 const Info = styled.div`

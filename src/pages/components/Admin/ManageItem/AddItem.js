@@ -14,7 +14,7 @@ import axios from '../../../../api/axios';
 const URL = './item';
 
 function AddItem() {
-  const [item_image, setItem_image] = useState('');
+  const [image, setItem_image] = useState('');
   const [item_name, setItem_name] = useState('');
   const [item_price, setItem_price] = useState('');
   const [category_id, setCategory_id] = useState('');
@@ -39,7 +39,7 @@ function AddItem() {
     const handleSave = async (e) => {
       e.preventDefault(); 
       const method = "POST";
-          const data = {item_image,item_name,item_price,category_id:category_name,item_status,item_description};
+          const data = {image,item_name,item_price,category_id:category_name,item_status,item_description};
           const mainURL = URL+'/add';
           serviceMethod(mainURL,method,data, handleSuccess, handleException);
     }
@@ -100,17 +100,42 @@ const handleitem_status=(event)=>{
         <Box component="form" noValidate sx={{ mt: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <TextField
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="item_image"
                 label="Item Image"
                 name="item_image"
-                value={item_image}
+                value={image}
                 onChange={(e) => setItem_image(e.target.value)}
                 autoFocus
-              />
+              /> */}
+              <FormControl fullWidth>                      
+                                
+                                <TextField
+                                    fullWidth
+                                    label="Product Image"
+                                    
+                                    onBlur={() => {
+                                    }}
+                                    onChange={(e) => {
+                                    if(e.target.files && e.target.files.length > 0){
+                                        setItem_image(e.target.files[0]);
+                                        const reader = new FileReader();
+                                        reader.onload = () =>{
+                                            if(reader.readyState === 2){
+                                              setItem_image(reader.result);
+                                            }
+                                        }
+                                        reader.readAsDataURL(e.target.files[0]);
+                                    }
+                                    }}
+                                    InputLabelProps={{ shrink: true }}
+                                    type="file"
+                                    
+                                />
+                            </FormControl>
             </Grid>
             <Grid item xs={6}>
               <TextField

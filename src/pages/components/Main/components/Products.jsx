@@ -4,7 +4,7 @@ import Product from "./Product";
 import React, { useEffect, useState } from "react";
 import axios from "../../../../api/axios";
 import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
-const URL = './products';
+const URL = './item';
 
 const Container = styled.div`
     padding: 20px;
@@ -20,7 +20,7 @@ const Products = () => {
   const [refreshData, setRefreshData] = useState(false);
   const {state} = useLocation();
 
- const searchedData = state ? state.searchedData : null;
+  const searchedData = state ? state.barcode_number : null;
 
   useEffect(() => {
     if(searchedData){

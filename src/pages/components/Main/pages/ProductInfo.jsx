@@ -10,7 +10,7 @@ import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import { useAuthContext } from '../../../../context/AuthContext';
 import ApplicationStore from "../../../../utils/localStorageUtil";
 import axios from "../../../../api/axios";
-const URL = './checkout';
+const URL = './item';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -124,7 +124,7 @@ const ProductInfo = () => {
 
   const {state} = useLocation();
   const {item} = state;
-  const empid=ApplicationStore().getStorage("empid");
+  // const student_id=ApplicationStore().getStorage("student_id");
   const [quantity, setQuantity] = useState(0);
   const { AddToCart, getCart, removeToCart,url } = useAuthContext();
 
@@ -176,7 +176,7 @@ const cartData = () => {
       const method = "POST";  
       try {        
          console.log(productData);
-          const data = {userid:empid,cartList:productData};
+          const data = {cartList:productData};
           console.log(data);
           const mainURL = URL+'/add';
           serviceMethod(mainURL,method,data, handleSuccess, handleException);
