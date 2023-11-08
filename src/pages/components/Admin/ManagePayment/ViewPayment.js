@@ -98,22 +98,11 @@ const ViewPayment = () => {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
-    { field: 'pname', headerName: 'Item', width: 150 },
+    { field: 'item_name', headerName: 'Item', width: 150 },
     { field: 'quantity', headerName: 'quantity', width: 150 },
     { field: 'price', headerName: 'Price', width: 150 },
     { field: 'Total', headerName: 'Total', width: 150, renderCell: (params) => <div>{params.row.quantity * params.row.price}</div> },
-    // {
-    //   field: 'actions',
-    //   type: 'actions',
-    //   headerName: 'Actions',
-    //   width: 150,
-    //   cellClassName: 'actions',
-    //   getActions: (params) => {
-    //     return [
-    //       <DeleteData selectedRow={params.row} />
-    //     ];
-    //   }
-    // },
+   
   ];
 
   useEffect(() => {

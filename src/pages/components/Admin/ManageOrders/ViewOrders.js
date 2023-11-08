@@ -120,10 +120,10 @@ const ViewOrder = () => {
 
     const columns = [
         { field: "id", headerName: "ID", width: 70 },
-        { field: "barcode_number", headerName: "Token Number", width: 130 },
-        { field: "serving_time", headerName: "Serving Time", width: 130 },
+        { field: "barcode_number", headerName: "Token Number", width: 160 },
+        { field: "serving_time", headerName: "Serving Time", width: 170 },
         { field: "student_id", headerName: "Student Reg No", width: 130 },
-        { field: "booking_date", headerName: "Ordered On", width: 130 },
+        { field: "booking_date", headerName: "Ordered On", width: 200 },
         { field: "booking_status", headerName: "Status", width: 130 },      
         {
             field: 'actions',
@@ -279,15 +279,14 @@ const ViewOrder = () => {
             
             <div style={{ marginTop: '10px', padding: '2px' }}>
     <div className="GridContent">
-        <Box sx={{ flexGrow: 1, padding: '0px', height: 400, width: '100%' }} >  {/* Adjust the width here */}
-            <DataGrid
-                rows={dataList}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                experimentalFeatures={{ newEditingApi: true }}
-            />
-        </Box>
+    <div style={{ padding: '5px' }}>
+      <Box sx={{ position: 'relative', top: '10px', left: '-80px', height: 400, width: '100%' }}>
+      <DataGrid
+        rows={dataList}
+        columns={columns}
+      />    
+    </Box>
+  </div>
     </div>
 </div>
         </>

@@ -10,7 +10,7 @@ import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import { useAuthContext } from '../../../../context/AuthContext';
 import ApplicationStore from "../../../../utils/localStorageUtil";
 import axios from "../../../../api/axios";
-const URL = './item';
+const URL = './booking';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -124,7 +124,7 @@ const ProductInfo = () => {
 
   const {state} = useLocation();
   const {item} = state;
-  // const student_id=ApplicationStore().getStorage("student_id");
+  // const {student_id}=useAuthContext();
   const [quantity, setQuantity] = useState(0);
   const { AddToCart, getCart, removeToCart,url } = useAuthContext();
 
@@ -176,10 +176,11 @@ const cartData = () => {
       const method = "POST";  
       try {        
          console.log(productData);
-          const data = {cartList:productData};
+          const data = {student_id:"",cartList:productData};
           console.log(data);
           const mainURL = URL+'/add';
           serviceMethod(mainURL,method,data, handleSuccess, handleException);
+          alert("successfully added to cart");
       }
       catch(e){
           console.error(e);
@@ -192,6 +193,7 @@ const cartData = () => {
 
 const handleSuccess = (data) => {    
   console.log("data"); 
+  alert("successfully added to cart");
 }
 
 const handleException = (data) => {
@@ -227,7 +229,7 @@ const removeData = () => {
           <Desc>
            {item.desc}
           </Desc>
-          <Price>${item.price}</Price>
+          <Price>RS.{item.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>

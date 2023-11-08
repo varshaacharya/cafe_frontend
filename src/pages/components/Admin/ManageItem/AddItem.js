@@ -84,143 +84,128 @@ const handleitem_status=(event)=>{
   setItem_status(event.target.value);
 };
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 3,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          ADD PRODUCT
-        </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              {/* <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="item_image"
-                label="Item Image"
-                name="item_image"
-                value={image}
-                onChange={(e) => setItem_image(e.target.value)}
-                autoFocus
-              /> */}
-              <FormControl fullWidth>                      
-                                
-                                <TextField
-                                    fullWidth
-                                    label="Product Image"
-                                    
-                                    onBlur={() => {
-                                    }}
-                                    onChange={(e) => {
-                                    if(e.target.files && e.target.files.length > 0){
-                                        setItem_image(e.target.files[0]);
-                                        const reader = new FileReader();
-                                        reader.onload = () =>{
-                                            if(reader.readyState === 2){
-                                              setItem_image(reader.result);
-                                            }
-                                        }
-                                        reader.readAsDataURL(e.target.files[0]);
-                                    }
-                                    }}
-                                    InputLabelProps={{ shrink: true }}
-                                    type="file"
-                                    
-                                />
-                            </FormControl>
-            </Grid>
-            <Grid item xs={6}>
+return (
+  <Container component="main" maxWidth="xm">
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Typography component="h1" variant="h5">
+        ADD PRODUCT
+      </Typography>
+      <Box component="form" noValidate sx={{ mt: 3 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
               <TextField
-                margin="normal"
-                required
                 fullWidth
-                id="item_name"
-                label="Product Name"
-                name="item_name"
-                value={item_name}
-                onChange={(e) => setItem_name(e.target.value)}
+                label="Product Image"
+                onBlur={() => {}}
+                onChange={(e) => {
+                  if (e.target.files && e.target.files.length > 0) {
+                    setItem_image(e.target.files[0]);
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                      if (reader.readyState === 2) {
+                        setItem_image(reader.result);
+                      }
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+                }}
+                InputLabelProps={{ shrink: true }}
+                type="file"
               />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="item_price"
-                label="Product Price"
-                name="item_price"
-                value={item_price}
-                onChange={(e) => setItem_price(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="item_description"
-                label="Product Description"
-                name="item_description"
-                value={item_description}
-                onChange={(e) => setItem_description(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Category Name</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={category_name}
-                  label="Category name"
-                  onChange={(e) => setCategory_name(e.target.value)}
-                  style={{ textAlign: 'left' }}
-                >
-                  {categorylist.map((category) => (
-                    <MenuItem value={category.id}>{category.category_name}</MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Product Status</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={item_status}
-                  label="Product status"
-                  onChange={handleitem_status}
-                  style={{ textAlign: 'left' }}
-                >
-                  <MenuItem value={"active"}>Active</MenuItem>
-                  <MenuItem value={"inactive"}>In-Active</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
+            </FormControl>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={handleSave}
-          >
-            SUBMIT
-          </Button>
-        </Box>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="item_name"
+              label="Product Name"
+              name="item_name"
+              value={item_name}
+              onChange={(e) => setItem_name(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category Name</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={category_name}
+                label="Category name"
+                onChange={(e) => setCategory_name(e.target.value)}
+                style={{ textAlign: 'left' }}
+              >
+                {categorylist.map((category) => (
+                  <MenuItem value={category.id}>{category.category_name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="item_price"
+              label="Product Price"
+              name="item_price"
+              value={item_price}
+              onChange={(e) => setItem_price(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="item_description"
+              label="Product Description"
+              name="item_description"
+              value={item_description}
+              onChange={(e) => setItem_description(e.target.value)}
+              autoFocus
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Product Status</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={item_status}
+                label="Product status"
+                onChange={handleitem_status}
+                style={{ textAlign: 'left' }}
+              >
+                <MenuItem value="active">Active</MenuItem>
+                <MenuItem value="inactive">In-Active</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+          onClick={handleSave}
+        >
+          SUBMIT
+        </Button>
       </Box>
-    </Container>
-  );
+    </Box>
+  </Container>
+);
+
 }
 
 export default AddItem;

@@ -11,10 +11,10 @@ function ViewRecharge ()  {
     const columns = [
         { field: "id", headerName: "SL.NO", width: 150 },
         { field: "student_name", headerName: "Name", width: 150 },
-        { field: "student_email", headerName: "Email", width: 150 },
+        { field: "student_email", headerName: "Email", width: 220 },
         { field: "balance", headerName: "Balance", width: 150 },
         { field: "student_status", headerName: "status", width: 150 },
-        { field: "student_date", headerName: "date", width: 150 },
+        { field: "student_date", headerName: "date", width: 170 },
         {
             field: 'actions',
             type: 'actions',
@@ -163,14 +163,14 @@ function ViewRecharge ()  {
             </form>   
         </Dialog>
         <div className="GridContent">
-            <Box sx={{ position: 'relative', top: '10px', left: '270px', height: 400, width: '70%' }}>
-                <DataGrid
-                rows={dataList}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                />    
-            </Box>
+        <div style={{ padding: '5px' }}>
+      <Box sx={{ position: 'relative', top: '10px', left: '-80px', height: 400, width: '100%' }}>
+      <DataGrid
+        rows={dataList}
+        columns={columns}
+      />    
+    </Box>
+  </div>
         </div>
 
 

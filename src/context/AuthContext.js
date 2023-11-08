@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationStore from "../utils/localStorageUtil";
-import axios from "../api/axios";
-const LOGOUT_URL = './auth/logout';
+// import axios from "../api/axios";
+// const LOGOUT_URL = './auth/logout';
 
 export const AuthContext = createContext({
      user:null,
@@ -16,7 +16,7 @@ export const AuthContextProvider = ({children}) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user_email,setUser_email]=useState(''); 
     const [cart,setCart] = useState([]);
-    const [student_id,setStudent_id] = useState('');
+    const [id,setId] = useState('');
     const [trackId,setTrackId] =  useState(0);
     const navigate = useNavigate();
     const url = "http://localhost:3006";
@@ -93,28 +93,30 @@ export const AuthContextProvider = ({children}) => {
 
     const Login = userData => { 
         setUserType(userData.user_type); 
-        setUser_email(userData.user_email);       
+        setUser_email(userData.user_email);
+        setId(userData.id); 
+        ApplicationStore().setStorage('id',userData.id);      
         ApplicationStore().setStorage('token',userData.userToken);
         ApplicationStore().setStorage('user_type',userData.user_type);
         ApplicationStore().setStorage('user_email',userData.user_email);
-        ApplicationStore().setStorage('student_id',userData.student_id);
+       
 
-        setStudent_id(userData.student_id);
+        
         setLoggedIn(true);
     }
 
     const Logout = async() => {
         const data = {user_email:user};
-        const response = await axios.post(LOGOUT_URL,data,
-          {
-            headers: {'Content-Type':'application/json' }                    
-          }
-        ); 
+        // const response = await axios.post(LOGOUT_URL,data,
+        //   {
+        //     headers: {'Content-Type':'application/json' }                    
+        //   }
+        // ); 
         console.log("loggd out");
         ApplicationStore().removeStorage('token');
         ApplicationStore().removeStorage('user_type');
         ApplicationStore().removeStorage('user_email');
-        ApplicationStore().removeStorage('student_id');
+        ApplicationStore().removeStorage('id');
 
         setUser(null);
         setLoggedIn(false);
@@ -122,7 +124,7 @@ export const AuthContextProvider = ({children}) => {
     }
 
     return  (
-        <AuthContext.Provider value={{ user, Login, user_type, loggedIn, Logout,user_email,AddToCart,getCart,removeToCart,url,trackId,student_id }}>
+        <AuthContext.Provider value={{ user, Login, user_type, loggedIn, Logout,user_email,AddToCart,getCart,removeToCart,url,trackId ,id}}>
             {children}
         </AuthContext.Provider>
     )
@@ -130,8 +132,8 @@ export const AuthContextProvider = ({children}) => {
 }
 
 export function useAuthContext(){
-    const {user, Login, user_type, loggedIn, Logout,user_email,cart,AddToCart,getCart,removeToCart,url,trackId,student_id} =  useContext(AuthContext);
-    return {user, Login, user_type, loggedIn, Logout,user_email,cart,AddToCart,getCart,removeToCart,url,trackId,student_id};
+    const {user, Login, user_type, loggedIn, Logout,user_email,cart,AddToCart,getCart,removeToCart,url,trackId,id} =  useContext(AuthContext);
+    return {user, Login, user_type, loggedIn, Logout,user_email,cart,AddToCart,getCart,removeToCart,url,trackId,id};
 }
 
 

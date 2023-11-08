@@ -9,12 +9,12 @@ function ViewStudent ()  {
     const columns = [
         { field: "id", headerName: "ID", width: 70 },
         { field: "student_name", headerName: "Student Name", width: 130 },
-        { field: "student_email", headerName: "email", width: 130 },
-        { field: "student_address", headerName: "Address", width: 130 },
-        { field: "student_contact", headerName: "Contact", width: 130 },
+        { field: "student_email", headerName: "email", width: 190 },
+        { field: "student_address", headerName: "Address", width: 150 },
+        { field: "student_contact", headerName: "Contact", width: 150 },
         { field: "balance", headerName: "Balance", width: 130 },
         { field: "student_status", headerName: "Status", width: 130 },
-        { field: "student_date", headerName: "Date", width: 130 },
+        { field: "student_date", headerName: "Date", width: 190 },
       ];
 
       const [dataList, setDataList] = useState([]); 
@@ -48,16 +48,14 @@ function ViewStudent ()  {
       
     
     return (
-        <div style={{ marginTop: '10px', padding: '50px' }}>
-          <Box sx={{ flexGrow: 1, height: 400, width: '100%' }}>
-            <DataGrid
-              rows={dataList}
-              columns={columns}
-              pageSize={5}
-              rowsPerPageOptions={[5]}
-            />    
-          </Box>
-        </div>
+      <div style={{ padding: '5px' }}>
+      <Box sx={{ position: 'relative', top: '10px', left: '-80px', height: 400, width: '100%' }}>
+      <DataGrid
+        rows={dataList}
+        columns={columns}
+      />    
+    </Box>
+  </div>
       );
 };
 export default ViewStudent;

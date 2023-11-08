@@ -42,8 +42,8 @@ function ViewCategory ()  {
   };
   
     return (
-        <div style={{ marginTop: '10px', padding: '50px' }}>
-            <Box sx={{ position: 'relative', top: '10px', left: '180px', height: 400, width: '80%' }}>
+        <div style={{ padding: '5px' }}>
+            <Box sx={{ position: 'relative', top: '10px', left: '-80px', height: 400, width: '100%' }}>
             <DataGrid
               rows={dataList}
               columns={columns}

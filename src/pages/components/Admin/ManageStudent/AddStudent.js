@@ -52,7 +52,7 @@ function AddStudent() {
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
-            marginTop: 3,
+            
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

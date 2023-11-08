@@ -13,7 +13,7 @@ const URL = './products/search';
 
 
 const Container = styled.div`
-  height: 60px;
+  height: 72px;
   ${mobile({ height: "50px" })}
 `;
 
@@ -135,10 +135,11 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>CAFE CONNECT</Logo>
         </Center>
         <Right>
           {/* <Link to='/Product'><MenuItem>Products</MenuItem></Link> */}
+          <Link to='/CustHome'><MenuItem>Home</MenuItem></Link>        
           <Link to='/ProductList'><MenuItem>Products List</MenuItem></Link>        
           <Link to='/Service'><MenuItem>Service</MenuItem></Link>
           <Link to='/Feedback'><MenuItem>Feedback</MenuItem></Link>

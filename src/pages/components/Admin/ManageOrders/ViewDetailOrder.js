@@ -117,11 +117,11 @@ const ViewDetailOrder = () => {
   const barcode_number = state ? state.barcode_number : null;
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 100 },
-    { field: 'pname', headerName: 'Item', width: 150 },
-    { field: 'quantity', headerName: 'quantity', width: 150 },
-    { field: 'price', headerName: 'Price', width: 150 },
-    { field: 'Total', headerName: 'Total', width: 150, renderCell: (params) => <div>{params.row.quantity * params.row.price}</div> },
+    { field: 'id', headerName: 'ID', width: 150 },
+    { field: 'pname', headerName: 'Item', width: 200 },
+    { field: 'quantity', headerName: 'quantity', width: 200 },
+    { field: 'price', headerName: 'Price', width: 200 },
+    { field: 'Total', headerName: 'Total', width: 180, renderCell: (params) => <div>{params.row.quantity * params.row.price}</div> },
     // {
     //   field: 'actions',
     //   type: 'actions',
@@ -286,7 +286,7 @@ const ViewDetailOrder = () => {
       </form>
       
       <div style={{ flex: 2 }}>
-        <Box sx={{ flexGrow: 3, padding: '0px', height: 400, width: '90%' }}>
+        <Box sx={{ flexGrow: 3, padding: '0px', height: 400, width: '100%' }}>
           <DataGrid rows={dataList} columns={columns}
             slots={{
               footer: CustomFooterStatusComponent,
